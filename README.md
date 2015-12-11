@@ -4,7 +4,7 @@ This is forked from https://github.com/Banno/graphite-setup, which built several
 
 # Why fork from Banno's setup
 
-We are using Mesos and want to deploy a Graphite cluster on Mesos. Unfortunately Mesos/Marathon lacks of a conventient mechnism to colocate multiple containers together (Mesos/Marathon doesn't support `links` or `volumes_from` in Docker Compose, or `pod` in Kubernetes`). So I did some experiments and figured out a different setup. 
+We are using Mesos and want to deploy a Graphite cluster on Mesos. Unfortunately Mesos/Marathon lacks of a conventient mechnism to colocate multiple containers together (Mesos/Marathon doesn't support `links` or `volumes_from` in Docker Compose, or `pod` in Kubernetes). So I did some experiments and figured out a different setup. 
 
 Here is how I made it. 
 - I put `carbon-cache` and `graphite-web` in one "bloated" container using supervisord. Such a container is pretty standalone. It exposes ports 2003 & 2004 for ingesting metrics, and port 80 for graphite query. That's it. It encapsulates the whisper data location. Nobody out of the container can directly access whisper.  
