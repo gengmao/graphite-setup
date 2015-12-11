@@ -1,6 +1,6 @@
 # Origin
 
-This is forked from https://github.com/Banno/graphite-setup, which built several awesome images of graphite and the associated carbon daemons: carbon-cache and carbon-relay. Basically, it puts one process into one image, and provides a `docker-compose.yml` file which is an example of a multi-node graphite cluster with each node running mulitple `carbon-cache`s. It's described on [Clustering Graphite - bitprophet.org](http://bitprophet.org/blog/2013/03/07/graphite/) as the "Multiple nodes, multiple caches on each, multiple relays".
+This is forked from https://github.com/Banno/graphite-setup, which built several awesome images of graphite and the associated carbon daemons: carbon-cache and carbon-relay. Basically, it puts one process into one image, and provides a [docker-compose.yml](https://github.com/Banno/graphite-setup/blob/master/docker-compose.yml) file which is an example of a multi-node graphite cluster with each node running mulitple `carbon-cache`s. It's described on [Clustering Graphite - bitprophet.org](http://bitprophet.org/blog/2013/03/07/graphite/) as the "Multiple nodes, multiple caches on each, multiple relays".
 
 # Why fork from Banno's setup
 
@@ -11,7 +11,7 @@ Here is how I made it.
 - `carbon-relay` container requires several parameters: RELAY_METHOD, DESTINATIONS, REPLICATION_FACTOR. It exposes ports 2003 & 2004 and relay data into multiple `carbon-cache` containers. 
 - `graphite-web` container requires one parameters: CLUSTER_SERVERS. It exposes port 80 to query user, and query multiple `carbon-cache` containers then return aggregated results. 
 
-The [docker-compose.yml] is an example cluster of two `carbon-cache` containers with one `carbon-relay` container and one `graphite-web` container. 
+The [docker-compose.yml](https://github.com/gengmao/graphite-setup/blob/master/docker-compose.yml) is an example cluster of two `carbon-cache` containers with one `carbon-relay` container and one `graphite-web` container. 
 
 # How it scales
 
